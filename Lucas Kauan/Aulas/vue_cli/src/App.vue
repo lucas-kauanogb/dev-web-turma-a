@@ -8,15 +8,22 @@
     <hr />
     <home-component />
     <br />
-    <usuario-component />
+    <usuario-component v-show="isUsuarioVisivel" />
     <br />
     <estilo-component/>
+    <br/>
+    <imagem-component @visibilidade-img="escutarVisibilidadeImg" widthImg="1000" urlImg="https://d24am.com/wp-content/uploads/2025/01/Gordao-da-XJ.png"/>
+    <br/>
+    <imagem-component @visibilidade-img="escutarVisibilidadeImg" widthImg="500" urlImg="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUBbTNN3YnU0SFmfpdLEufXzylBeQI1X5VAg&s"/>
+    <br/>
+    <imagem-component @visibilidade-img="escutarVisibilidadeImg" widthImg="500" urlImg="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFvyiiKCt4liEGUJPkKWdsDNYSNMiL2NBTSg&s"/>
   </div>
 </template>
 
 <script>
 import EstiloComponent from './components/EstiloComponent.vue';
 import HomeComponent from './components/HomeComponent.vue';
+import ImagemComponent from './components/ImagemComponent.vue';
 import UsuarioComponent from './components/UsuarioComponent.vue';
 
 export default {
@@ -25,6 +32,17 @@ export default {
     HomeComponent,
     UsuarioComponent,
     EstiloComponent,
+    ImagemComponent,
+  },
+  data (){
+  return {
+    isUsuarioVisivel: false,
+    };
+  },
+  methods: {
+  escutarVisibilidadeImg(isImgComponentVisivel) {
+    this.isUsuarioVisivel = !isImgComponentVisivel;
+    },
   },
   created() {
     console.log("created");
